@@ -8,15 +8,25 @@ RSpec.describe "UsersSignups", type: :request do
 		end
 
 		it "should render a signup page" do
-			get new_user_registration_path
+			get sign_up_path
 			expect(response).to render_template("devise/registrations/new")
 		end
 
 		it "should allow a new user to sign up" do
 			expect {
-				post user_registration_path, params: { user: { email: @user.email, password: @user.password, password_confirmation: @user.password_confirmation } } }.to change { User.count }
+				post sign_up_path, params: { user: { email: @user.email, password: @user.password, password_confirmation: @user.password_confirmation } } }.to change { User.count }
 			@user = User.find_by(email: @user.email)
 			expect(response).to redirect_to(user_path(@user))
+		end
+
+		it "should not allow a new user to sign up with a bad email/password" do
+			@user.email = "aaronexample.com"
+			expect {
+				post sign_up_path, params: { user: { email: @user.email, password: @user.password, password_confirmation: @user.password_confirmation } } }.not_to change{User.count}
+			@user.email = "aaron@example.com"
+			@user.password = "  "
+			expect {
+				post sign_up_path, params: { user: { email: @user.email, password: @user.password, password_confirmation: @user.password_confirmation } } }.not_to change { User.count }
 		end
 	end
 end

@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_083950) do
+ActiveRecord::Schema.define(version: 2018_09_05_141657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "initial_capital"
+    t.integer "one_year_average"
+    t.integer "one_year_worst_loss"
+    t.integer "one_year_best_gain"
+    t.integer "five_year_average"
+    t.integer "five_year_worst_loss"
+    t.integer "five_year_best_gain"
+    t.integer "ten_year_average"
+    t.integer "ten_year_worst_loss"
+    t.integer "ten_year_best_gain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "name"
+    t.string "symbol"
+    t.float "portfolio_percentage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
