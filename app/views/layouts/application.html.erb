@@ -10,6 +10,7 @@
   </head>
 
   <body>
+		<%= render 'layouts/header' %>
 		<% flash.each do |msg_type, msg| %>
 			<p class="#{msg-type}"><%= msg %></p>
 		<% end %>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 		post 'sign_up', to: 'users/registrations#create'
 		get 'sign_in', to: 'devise/sessions#new'
 		post 'sign_in', to: 'devise/sessions#create'
-		delete 'sign_out', to: 'devise/sessions#destroy'
+		delete 'sign_out', to: 'users/sessions#destroy'
 	end
 	resources :users, only: [:show]	
 	root to: 'users#show'
