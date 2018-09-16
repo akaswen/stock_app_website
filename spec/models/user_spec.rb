@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
 	context 'validation tests' do
 
 		before(:each) do
-			@user = User.new(email: "aaron@example.com", password: "password", password_confirmation: "password")
+			@user = User.new(name: "aaron", email: "aaron@example.com", password: "password", password_confirmation: "password")
 		end
 
 		it 'should be valid' do

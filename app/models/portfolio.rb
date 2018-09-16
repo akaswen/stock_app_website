@@ -1,7 +1,7 @@
 class Portfolio < ApplicationRecord
 	belongs_to :user
 	has_many :stocks, dependent: :destroy
-	accepts_nested_attributes_for :stocks
+	accepts_nested_attributes_for :stocks, reject_if: lambda {|attributes| attributes[:name].blank? && attributes[:portfolio_percentage].blank? }
 	validates_presence_of :stocks, :name, :initial_capital
 	before_save :saves_stocks
 	before_save :calculate_attributes unless Rails.env.test?

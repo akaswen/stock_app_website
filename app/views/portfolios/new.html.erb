@@ -1,24 +1,25 @@
 <h1>Portfolios#new</h1>
-<p>Find me in app/views/portfolios/new.html.erb</p>
+
+<ul>
+	<% @portfolio.errors.full_messages.each do |error| %>
+		<li><%= error %></li>
+	<% end %>
+</ul>
 
 <%= form_for(@portfolio) do |f| %>
-	<%= f.label :name %>
+	<%= f.label :name, "Portfolio name:" %>
 	<%= f.text_field :name %>
 
 	<%= f.label :initial_capital %>
 	<%= f.number_field :initial_capital %>
 
-	<% 10.times do %>
-		<%= f.fields_for @stock do |stock| %>
-			<%= f.label :name %>
-			<%= f.text_field :name %>
+	<h3>Stocks:</h3>
+	<%= f.fields_for :stocks do |stock_field| %>
+		<%= stock_field.label :symbol %>
+		<%= stock_field.text_field :symbol %>
 
-			<%= f.label :symbol %>
-			<%= f.text_field :symbol %>
-
-			<%= f.label :portfolio_percentage %>
-			<%= f.number_field :portfolio_percentage, class: text_field, step: 0.01 %>
-		<% end %>
+		<%= stock_field.label :portfolio_percentage, "portfolio percentage (in decimal value)" %>
+		<%= stock_field.number_field :portfolio_percentage, step: 0.01, max: 1.0 %><br>
 	<% end %>
 
 	<%= f.submit %>

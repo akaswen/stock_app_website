@@ -5,7 +5,7 @@ RSpec.describe "UserSignIns", type: :request do
 	context "users should be able to sign in" do
 		
 		before(:each) do
-		 	@user = User.create!(email: "aaron@example.com", password: "password", password_confirmation: "password") 
+		 	@user = User.create!(name: "aaron", email: "aaron@example.com", password: "password", password_confirmation: "password") 
 		end
 		
 		it "should change login and sign out links" do
@@ -13,12 +13,12 @@ RSpec.describe "UserSignIns", type: :request do
 			expect(response).to render_template("devise/sessions/new")
 			expect(response.body).not_to match /sign out/i
 			expect(response.body).to match /sign in/i
-			sign_in(@user)
+			my_sign_in(@user)
       expect(response).to redirect_to(root_url)
 			follow_redirect!
 			expect(response.body).to match /sign out/i
 			expect(response.body).not_to match /sign in/i
-			sign_out(@user)
+			my_sign_out(@user)
 			get sign_in_path
 			expect(response.body).not_to match /sign out/i
 			expect(response.body).to match /sign in/i

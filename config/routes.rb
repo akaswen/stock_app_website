@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 		post 'sign_in', to: 'devise/sessions#create'
 		delete 'sign_out', to: 'users/sessions#destroy'
 	end
-	resources :users, only: [:show]	
-	resources :portfolios
-	root to: 'users#show'
+	get 'my_portfolios', to: 'users#show'
+	resources :portfolios, only: [:new, :create, :destroy, :show, :index]
+	root to: 'portfolios#index'
 end

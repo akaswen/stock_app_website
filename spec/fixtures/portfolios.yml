@@ -3,3 +3,12 @@ one:
   name: the Test
   initial_capital: 50000
   user_id: 1
+  one_year_average: 1
+  one_year_best: 1
+  one_year_worst: 1
+  two_year_average: 1
+  two_year_best: 1
+  two_year_worst: 1
+  three_year_average: 1
+  three_year_best: 1
+  three_year_worst: 1
