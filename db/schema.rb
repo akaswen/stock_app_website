@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_142049) do
+ActiveRecord::Schema.define(version: 2018_09_15_205337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 2018_09_11_142049) do
   create_table "portfolios", force: :cascade do |t|
     t.integer "initial_capital"
     t.integer "one_year_average"
-    t.integer "one_year_worst_loss"
-    t.integer "one_year_best_gain"
-    t.integer "five_year_average"
-    t.integer "five_year_worst_loss"
-    t.integer "five_year_best_gain"
-    t.integer "ten_year_average"
-    t.integer "ten_year_worst_loss"
-    t.integer "ten_year_best_gain"
+    t.integer "one_year_worst"
+    t.integer "one_year_best"
+    t.integer "three_year_average"
+    t.integer "three_year_worst"
+    t.integer "three_year_best"
+    t.integer "two_year_average"
+    t.integer "two_year_worst"
+    t.integer "two_year_best"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_142049) do
   end
 
   create_table "stocks", force: :cascade do |t|
+    t.string "name"
     t.string "symbol"
     t.float "portfolio_percentage"
     t.datetime "created_at", null: false

@@ -1,0 +1,20 @@
+<h1><%= @portfolio.name %></h1>
+
+<ul>
+	<li>$<%= @portfolio.initial_capital %> invested</li>
+	<% @portfolio.stocks.each do |stock| %>
+		<li>symbol: <%= stock.symbol %> - <%= stock.portfolio_percentage * 100 %>%</li>
+	<% end %>
+</ul>
+
+<ul>
+	<% [["one", "year"], ["two", "years"], ["three", "years"]].each do |n| %>
+		<li>If you invested for <%= n[0] %> with this portfolio:
+			<ul>
+				<li>At best you could have made: $<%= @portfolio.send("#{n[0]}_year_best") %> or <%= ((@portfolio.send("#{n[0]}_year_best").to_f / @portfolio.initial_capital) * 100).to_i %>%</li>
+				<li>At worst you could have made: $<%= @portfolio.send("#{n[0]}_year_worst") %> or <%= ((@portfolio.send("#{n[0]}_year_worst").to_f / @portfolio.initial_capital) * 100).to_i %>%</li>
+				<li>On Average you would have made: $<%= @portfolio.send("#{n[0]}_year_average") %> or <%= ((@portfolio.send("#{n[0]}_year_average").to_f / @portfolio.initial_capital) * 100).to_i %>%</li>
+			</ul>
+		</li>
+	<% end %>
+</ul>

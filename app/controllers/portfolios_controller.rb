@@ -10,6 +10,10 @@ class PortfoliosController < ApplicationController
 		#debugger	
 	end
 
+	def show
+		@portfolio = Portfolio.find(params[:id])
+	end
+
 	private
 
 	def portfolio_params

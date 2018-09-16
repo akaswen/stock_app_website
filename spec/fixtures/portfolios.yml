@@ -1,0 +1,5 @@
+one: 
+  id: 1
+  name: the Test
+  initial_capital: 50000
+  user_id: 1

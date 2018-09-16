@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 		delete 'sign_out', to: 'users/sessions#destroy'
 	end
 	resources :users, only: [:show]	
+	resources :portfolios
 	root to: 'users#show'
 end

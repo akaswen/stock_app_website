@@ -1,3 +1,4 @@
 aaron:
+  id: 1
   email: aaron-fixture@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>

@@ -3,14 +3,14 @@ class CreatePortfolios < ActiveRecord::Migration[5.2]
     create_table :portfolios do |t|
 			t.integer :initial_capital
 			t.integer :one_year_average
-			t.integer :one_year_worst_loss
-			t.integer :one_year_best_gain
+			t.integer :one_year_worst
+			t.integer :one_year_best
+			t.integer :three_year_average
+			t.integer :three_year_worst
+			t.integer :three_year_best
 			t.integer :five_year_average
-			t.integer :five_year_worst_loss
-			t.integer :five_year_best_gain
-			t.integer :ten_year_average
-			t.integer :ten_year_worst_loss
-			t.integer :ten_year_best_gain
+			t.integer :five_year_worst
+			t.integer :five_year_best
 
       t.timestamps
     end
