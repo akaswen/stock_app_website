@@ -1,6 +1,6 @@
-<li><%= link_to object.name, object %> - average yearly return: <%= ((object.one_year_average / object.initial_capital.to_f) * 100).to_i %>% - <span>
+<li><%= link_to object.name, object %> - average yearly return: <%= ((object.one_year_average / object.initial_capital.to_f) * 100).to_i %>% <span>
 <% if object.user == current_user %>
-	<%= link_to "delete", portfolio_path(object), method: :delete %>
+	<%= link_to "- delete", portfolio_path(object), method: :delete %>
 <% end %>
 	</span>
 </li>
