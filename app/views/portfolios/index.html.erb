@@ -1,3 +1,9 @@
+<h1>All Portfolios</h1>
+
+<%= render 'shared/information' %>
+
+<h2>Portfolios</h2>
+
 <ul>
 	<% @portfolios.each do |portfolio| %>
 		<%= render 'shared/portfolio', object: portfolio %>

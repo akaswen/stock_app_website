@@ -26,8 +26,8 @@ class Portfolio < ApplicationRecord
 		end
 
 		def correct_percents
-			total = stocks.inject(0.0) { |sum, stock| sum + stock.portfolio_percentage }
-			total == 1.0 ? true : errors.add(:stocks, "Incorrect percentages")
+			total = stocks.inject(0) { |sum, stock| sum + ((stock.portfolio_percentage) * 100).to_i }
+			total == 100 ? true : errors.add(:stocks, "Incorrect percentages")
 		end
 
 		def calculate_attributes
