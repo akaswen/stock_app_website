@@ -2,29 +2,29 @@
 
 <p>This app allows you to create a portfolio and use historical share price data to see how well it would have done.  Please note that this website is designed for educational purposes only. It is not intended to be investment advice.  Seek a duly licensed professional for investment advice.</p>
 
-<h3>About the Calculations</h3>
-
-<p>The Portfolio Backtester takes your stocks and their percentages and initial capital and uses this information to calculate earnings.</p>
-<ol>
-	<li>The symbols are used to get the stock history from IEX API.</li>
-	<li>Because there can be alot of information being pulled for each stock, please allow up to a couple minutes after submitting the form for the calculations to be made.</li>
-	<li>For each stock, up to five years of data are pulled</li>
-	<li>Once Portfolio Backtester has all the data, it collects all of the closing prices from each day</li>
-	<li>Not every stock has a full five years of data, so Portfolio Backtester will cut down each stock into the same time length.  E.g. if one stock has 5 years of data and another has only one year, both stocks are cut down to one year.</li>
-	<li>After pulling out the closing values and trimming the length of each stock to make them the same, it will start on the earliest day, use the initial capital you submitted to "buy shares", then check the price one year later and "sell".  It will then do this starting on the next day and so on for all the data available.</li>
-	<li>Once the results of each buy/sell period are calculated, the lowest result, the highest result, and the average result are returned.  This is done for a one year investment period, two year investment period, and three year investment period.</li>
-</ol>
-
 <h3>Instructions for creating a portfolio</h3>
 
 <ol>
 	<li>First, navigate to the <%= link_to "New Portfolio", new_portfolio_path %> page</li>
-	<li>Enter in a name for your portfolio and an amount that will be the amount you'd want to invest with</li>
-	<li>Below the name and initial capital sections, you can enter in the symbol (e.g. aapl or msft) and the portfolio percentage for each stock you want to put into the portfolio.</li>
-	<li>The portfolio percentage determines how much of the initial capital to invest in each stock and is in decimal form.  E.g. if you have an initial capital of $50000 and you want to invest half of that in aapl, you would enter 0.5 for portfolio percentage.</li>
-	<li>Be sure that the total percentage numbers for all of the stocks adds up to 1</li>
-	<li>Each portfolio can have up to ten different stocks.  If you'd like to have less, simply leave the other entries blank</li>
-	<li>There are still a few limitations for the API, so if you enter in a stock that you know is correct but you receive an error, it may be that IEX does not have those records yet.</li>
+	<li>Enter in a name for your portfolio and the amount you would like to invest</li>
+	<li>Below that you can enter in the symbols (e.g., aapl or msft) and the portfolio percentage for each stock you want to put into the portfolio.</li>
+	<li>The portfolio percentage determines how much of the initial capital to invest in each stock and is presented in decimal form.  E.g., if you have an initial capital of $50000 and you want to invest half of that in aapl, you would enter 0.5 for portfolio percentage.</li>
+	<li>Be sure that the total percentage numbers for all of the stocks add up to 1</li>
+	<li>Each portfolio can include up to ten different stocks.  If you'd like to have less, simply leave the other entries blank</li>
+	<li>There are still a few limitations for the API, so if you enter in a stock that you know is correct but you receive an error, it may be that IEX (the api providing the data) does not have those records yet.</li>
+</ol>
+
+<h3>How it works</h3>
+
+<p>The Portfolio Backtester takes your stocks and their percentages and initial capital and uses this information to calculate earnings.</p>
+<ol>
+	<li>The symbols are used to get the stock history from IEX API.</li>
+	<li>Since there can be a lot of information being pulled for each stock, please allow up to a couple minutes after submitting the form for the calculations to be made.</li>
+	<li>Up to five years of data are pulled for each stock</li>
+	<li>Once Portfolio Backtester has all the data (opening prices, adjusted markets, highs, lows, etc), it collects all of the closing prices from each day</li>
+	<li>Not every stock has a full five years of data. If that is the case, Portfolio Backtester will cut down each stock into the same time length.  E.g., if one stock has 5 years of data and another has only one year, both stocks are cut down to one year.</li>
+	<li>After pulling out the closing values and possibly trimming the length of each stock to make them the same, it will start on the earliest day, use the initial capital you have submitted to "buy shares", then check the price one year later and "sell".  It will then do this starting on the next day and so on for all the data available.</li>
+	<li>Once the results of each buy/sell period are calculated, the lowest result, the highest result, and the average result are returned.  This is done for a one year investment period, two year investment period, and three year investment period.</li>
 </ol>
 
 <h3>Results</h3>
