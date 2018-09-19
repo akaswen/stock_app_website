@@ -2,8 +2,8 @@
 
 <%= render 'shared/information' %>
 
-<div class="container">
-	<h2>Portfolio Form</h2>
+<div class="container border p-3">
+	<h2 class="text-center">Portfolio Form:</h2>
 
 	<ul>
 		<% @portfolio.errors.full_messages.each do |error| %>
@@ -12,21 +12,39 @@
 	</ul>
 
 	<%= form_for(@portfolio) do |f| %>
-		<%= f.label :name, "Portfolio name:" %>
-		<%= f.text_field :name %>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<%= f.label :name, "Portfolio name: " %>
+				<div class="w-100 d-md-none"></div>
+				<%= f.text_field :name %>
+			</div>
 
-		<%= f.label :initial_capital %>
-		<%= f.number_field :initial_capital %>
+			<div class="form-group col-md-6">
+				<%= f.label :initial_capital, "Initial Capital: " %>
+				<div class="w-100 d-lg-none"></div>
+				<%= f.number_field :initial_capital %>
+			</div>
+		</div>
 
-		<h3>Stocks:</h3>
+		<h3 class="text-md-center text-muted mb-5">Stocks:</h3>
 		<%= f.fields_for :stocks do |stock_field| %>
-			<%= stock_field.label :symbol %>
-			<%= stock_field.text_field :symbol %>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<%= stock_field.label :symbol, "Symbol: ", class: "text-primary" %>
+					<div class="w-100 d-md-none"></div>
+					<%= stock_field.text_field :symbol %>
+				</div>
 
-			<%= stock_field.label :portfolio_percentage, "portfolio percentage (in decimal value)" %>
-			<%= stock_field.number_field :portfolio_percentage, step: 0.01, max: 1.0 %><br>
+				<div class="form-group col-md-6 mb-md-0 mb-5">
+					<%= stock_field.label :portfolio_percentage, "Portfolio percentage (in decimal value): ", class: "text-dark" %>
+					<div class="w-100 d-md-none"></div>
+					<%= stock_field.number_field :portfolio_percentage, step: 0.01, max: 1.0 %><br>
+				</div>
+			</div>
 		<% end %>
 
-		<%= f.submit %>
+		<div class="row justify-content-end">
+			<%= f.submit class: "mr-5 my-3" %>
+		</div>
 	<% end %>
 </div>
