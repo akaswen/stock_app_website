@@ -1,1 +1,15 @@
 @import 'bootstrap';
+
+header {
+	h1 {
+		a:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.portfolios-list {
+	li {
+		line-height: 3;
+	}
+}

@@ -1,30 +1,32 @@
-<h1>Make a new portfolio</h1>
+<h2 class="text-center text-info my-3">Make a new portfolio</h2>
 
 <%= render 'shared/information' %>
 
-<h2>Portfolio Form</h2>
+<div class="container">
+	<h2>Portfolio Form</h2>
 
-<ul>
-	<% @portfolio.errors.full_messages.each do |error| %>
-		<li><%= error %></li>
+	<ul>
+		<% @portfolio.errors.full_messages.each do |error| %>
+			<li><%= error %></li>
+		<% end %>
+	</ul>
+
+	<%= form_for(@portfolio) do |f| %>
+		<%= f.label :name, "Portfolio name:" %>
+		<%= f.text_field :name %>
+
+		<%= f.label :initial_capital %>
+		<%= f.number_field :initial_capital %>
+
+		<h3>Stocks:</h3>
+		<%= f.fields_for :stocks do |stock_field| %>
+			<%= stock_field.label :symbol %>
+			<%= stock_field.text_field :symbol %>
+
+			<%= stock_field.label :portfolio_percentage, "portfolio percentage (in decimal value)" %>
+			<%= stock_field.number_field :portfolio_percentage, step: 0.01, max: 1.0 %><br>
+		<% end %>
+
+		<%= f.submit %>
 	<% end %>
-</ul>
-
-<%= form_for(@portfolio) do |f| %>
-	<%= f.label :name, "Portfolio name:" %>
-	<%= f.text_field :name %>
-
-	<%= f.label :initial_capital %>
-	<%= f.number_field :initial_capital %>
-
-	<h3>Stocks:</h3>
-	<%= f.fields_for :stocks do |stock_field| %>
-		<%= stock_field.label :symbol %>
-		<%= stock_field.text_field :symbol %>
-
-		<%= stock_field.label :portfolio_percentage, "portfolio percentage (in decimal value)" %>
-		<%= stock_field.number_field :portfolio_percentage, step: 0.01, max: 1.0 %><br>
-	<% end %>
-
-	<%= f.submit %>
-<% end %>
+</div>
