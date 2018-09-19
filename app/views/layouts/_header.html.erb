@@ -1,5 +1,20 @@
-<% if user_signed_in? %>
-	<%= render 'layouts/signed_in_header' %>
-<% else %>
-	<%= render 'layouts/signed_out_header' %>
-<% end %>
+<header class="bg-secondary">
+	<div class="row align-items-end">
+		<div class="col"></div>
+		<div class="col-6">
+			<h1 class="text-center text-white pb-3">Portfolio Backtester</h1>
+		</div>
+		<div class="col">
+			<div class="dropdown text-right p-4">
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<% if user_signed_in? %>
+						<%= render 'layouts/signed_in_header' %>
+					<% else %>
+						<%= render 'layouts/signed_out_header' %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

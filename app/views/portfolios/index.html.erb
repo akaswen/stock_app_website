@@ -1,11 +1,12 @@
-<h1>All Portfolios</h1>
+<h2 class="text-center text-info my-3">All Portfolios</h2>
 
 <%= render 'shared/information' %>
+<div class="container-fluid pl-3">
+	<h2>Portfolios</h2>
 
-<h2>Portfolios</h2>
-
-<ul>
-	<% @portfolios.each do |portfolio| %>
-		<%= render 'shared/portfolio', object: portfolio %>
-	<% end %>
-</ul>
+	<ul>
+		<% @portfolios.each do |portfolio| %>
+			<%= render 'shared/portfolio', object: portfolio %>
+		<% end %>
+	</ul>
+</div>
