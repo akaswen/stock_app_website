@@ -5,17 +5,8 @@
 	<div class="row">
 		<div class="col">
 			<h2 class="text-center">Portfolios</h2>
+			<%= will_paginate @portfolios, class: "text-center" %>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col"></div>
-		<div class="col-8-sm mx-5 portfolios-list">
-			<ul>
-				<% @portfolios.each do |portfolio| %>
-					<%= render 'shared/portfolio', object: portfolio %>
-				<% end %>
-			</ul>
-		</div>
-		<div class="col"></div>
-	</div>
+	<%= render 'shared/portfolio_list' %>
 </div>

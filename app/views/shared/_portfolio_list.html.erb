@@ -1,0 +1,11 @@
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-8-sm mx-5 portfolios-list">
+			<ul>
+				<% @portfolios.each do |p| %>
+					<%= render 'shared/portfolio', object: p %>
+				<% end %>
+			</ul>
+		</div>
+		<div class="col"></div>
+	</div>

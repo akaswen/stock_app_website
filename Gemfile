@@ -18,7 +18,7 @@ gem 'figaro'
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'guard'
-
+gem 'will_paginate', '~> 3.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 

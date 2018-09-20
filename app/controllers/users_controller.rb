@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
 		@user = current_user
+		@portfolios = @user.portfolios.paginate(page: params[:page])
   end
 
 end
