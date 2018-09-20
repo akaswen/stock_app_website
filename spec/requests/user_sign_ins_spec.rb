@@ -9,19 +9,18 @@ RSpec.describe "UserSignIns", type: :request do
 		end
 		
 		it "should change login and sign out links" do
-			get sign_in_path
-			expect(response).to render_template("devise/sessions/new")
+			get root_path
 			expect(response.body).not_to match /sign out/i
-			expect(response.body).to match /sign in/i
+			expect(response.body.scan(/sign in/i).size).to eq(2) 
 			my_sign_in(@user)
       expect(response).to redirect_to(root_url)
 			follow_redirect!
 			expect(response.body).to match /sign out/i
-			expect(response.body).not_to match /sign in/i
+			expect(response.body.scan(/sign in/i).size).to eq(1) 
 			my_sign_out(@user)
-			get sign_in_path
+			get root_path
 			expect(response.body).not_to match /sign out/i
-			expect(response.body).to match /sign in/i
+			expect(response.body.scan(/sign in/i).size).to eq(2) 
 		end
 	end
 end
